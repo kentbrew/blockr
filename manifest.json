@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "name": "twttr blockr",
+  "description": "Twitter Blocker",
+  "background":{
+    "scripts":["blockr.js"]
+  },
+  "permissions": [ 
+    "*://*/*"
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "manifest_version": 2
+}
