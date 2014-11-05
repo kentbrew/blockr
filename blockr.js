@@ -29,7 +29,7 @@ var block = function (blockStart, blockEnd) {
       if (i < blockEnd + 1) {
         window.setTimeout(function () {
           block();
-        }, 1000);
+        }, 250);
       }
     }
     block();
