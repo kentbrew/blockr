@@ -33,7 +33,7 @@ If all goes well, you'll see something like this:
     got token: 5d39109c3dce3bda61f83f09e23999f2f19bd285
     15413 accounts found.
     
-... and then a bunch of entries like this one, one second apart:
+... and then a bunch of entries like this one, spaced 250ms apart:
 
     blocking: 00GGDouche 
     POST https://twitter.com/i/user/report_spam 403 (Forbidden)
