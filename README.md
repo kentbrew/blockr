@@ -22,6 +22,7 @@ Assuming you're signed in to Twitter, Blockr will:
 - Use the Download ZIP button on this page to get the archive containing manifest.json and blockr.js.
 - Unzip this archive. You should have one folder, probably named `blockr-master`.
 - Open up Chrome's extension page by typing `chrome://extensions` into your URL bar.
+- Be sure the checkbox next to "Developer mode" is checked! (thanks, @soypunk!)
 - Drag the folder into the extensions page until you see the Drop to Install note.
 - Drop it.
 - Click the link next to Inspect Views, which says "background page."
