@@ -58,6 +58,20 @@ Twitter offers no real way to manage blocked accounts. I've tried TwitBlock and 
 
 I suspect that this is not an attractive problem for Twitter to solve. There aren't enough users who might want to power-block a bunch of accounts, those API queries are expensive, and there's just got too much else going on in the make-some-money department.
 
+#### So there's no going back once I do this?
+
+True. If you block all 15,000-plus users on this list there won't be any way to even enumerate the accounts you've blocked.
+
+I imagine it might be possible to unblock everyone by changing the endpoint from this, found around line 12 of `blockr.js`:
+
+    https://twitter.com/i/user/report_spam
+
+... to this:
+
+    https://twitter.com/i/user/unblock
+
+Haven't tried it, so this is pure speculation.  You might want to keep a backup copy of the block list, if you're super-concerned.
+
 #### Jeez, this thing is ugly. Any plans for an actual user interface? 
 
 Not presently, sorry; please feel free to fork and fix. It's a hack, folks, and I imagine Twitter will break it as soon as it starts to look useful.
