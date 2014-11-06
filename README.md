@@ -17,6 +17,10 @@ Assuming you're signed in to Twitter, Blockr will:
 - grab @freebsdgirl's list of GamerGate hooligans from https://github.com/freebsdgirl/ggautoblocker.
 - block however many of these that you want
 
+#### Whoa, it looks like this hits the `/report_spam` endpoint. Does it report for spam?
+
+No, because we're leaving the `report_type` parameter out. Sorry, the endpoint has a confusing name; personally I would have called it `/block`, to complement the `/unblock` endpoint. 
+
 #### How do I use it?
 
 - Use the Download ZIP button on this page to get the archive containing manifest.json and blockr.js.
