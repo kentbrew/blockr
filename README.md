@@ -46,13 +46,15 @@ If all goes well, you'll see something like this:
     
 Don't worry about the 403s; it seems to work regardless. Spot-check accounts on this list by appending it to https://twitter.com, thusly:
 
-    https://twitter.com/0GGdoucheGG
+    https://twitter.com/00GGdoucheGG
 
 If the Block button says "blocked," you're done. 
 
 #### Jeez, this thing is ugly. Any plans for an actual user interface? 
 
-Not presently, sorry; please feel free to fork and fix. It's a hack, folks, and I imagine Twitter will break it as soon as it starts to look useful.
+Not presently, sorry; please feel free to fork and fix.
+
+It's a hack, folks, and I imagine Twitter will break it as soon as it starts to look useful.
 
 #### How can I check if it worked on all of them?
 
@@ -64,24 +66,26 @@ I suspect that this is not an attractive problem for Twitter to solve. There are
 
 #### So there's no going back once I do this?
 
-Not exactly. If you block everyone on the list, you'll need to find the URL leading to the list of IDs you blocked. (Important: IDs, not screen names.) 
+Not exactly; read on. 
 
 #### Yesterday I needed to unblock everyone I'd blocked and re-do.  Here's how I did it:
 
-How I found the old list:
+If you block everyone on the list, you'll need to find the URL leading to the list of IDs you blocked. (Important: IDs, not screen names.)
+
+How I found the ID list:
 
 - From the main page at https://github.com/freebsdgirl/ggautoblocker I clicked the link to block_ids.txt 
-- I wound up up on https://github.com/freebsdgirl/ggautoblocker/blob/master/block_names.txt
+- I wound up up on https://github.com/freebsdgirl/ggautoblocker/blob/master/block_ids.txt
 - I clicked the History button and found the version that was up when I made my first run.
 - It was this: https://github.com/freebsdgirl/ggautoblocker/commit/5539e9e17eca20f81c94b2a7b53a7a27030fe890
-- I clicked the View button to get here: https://github.com/freebsdgirl/ggautoblocker/blob/5539e9e17eca20f81c94b2a7b53a7a27030fe890/block_names.txt
-- Finally, I clicked the Raw button to get here: https://raw.githubusercontent.com/freebsdgirl/ggautoblocker/5539e9e17eca20f81c94b2a7b53a7a27030fe890/block_names.txt
+- I clicked the View button to get here: https://github.com/freebsdgirl/ggautoblocker/blob/5539e9e17eca20f81c94b2a7b53a7a27030fe890/block_ids.txt
+- Finally, I clicked the Raw button to get here: https://raw.githubusercontent.com/freebsdgirl/ggautoblocker/5539e9e17eca20f81c94b2a7b53a7a27030fe890/block_ids.txt
 
 Once I found my original file, I changed the contents of `listUrl`:
 
     var listUrl = 'https://raw.githubusercontent.com/freebsdgirl/ggautoblocker/5539e9e17eca20f81c94b2a7b53a7a27030fe890/block_ids.txt';
 
-Then I changed lines 12 and 13 to use the `/unblock` endpoint, and sent just `authenticity_token` and `user_id`, like this:
+Changed lines 12 and 13 to use the `/unblock` endpoint, and sent just `authenticity_token` and `user_id`, like this:
 
     var params = 'authenticity_token=' + token + '&user_id=' + id;
     http.open('POST', 'https://twitter.com/i/user/unblock', true);
@@ -90,7 +94,6 @@ Clicked the link that said Reload and went back into my console, as before.
 
 Ran `block(0, 5)` to make sure it works on the first few of records, and got me the number of lines in the file. 
 
-Worked, minus the 404s for bank lines at the top? Cool.  Ran `block(2, 15624)` to unblock everyone. (While this was running I noticed that the `/unblock` endpoint never gave back a 403; there seems to be no rate limit. Weird, huh? You'd think it would be the other way around.)
+This seemed to work, minus the 404s for bank lines at the top.  I then ran `block(0, 15624)` to unblock everyone. (While this was running I noticed that the `/unblock` endpoint never gave back a 403; there seems to be no rate limit. Weird, huh? You'd think it would be the other way around.)
 
-Since this was an undo-plus-redo, I changed everything in code back to the way it was before I undid, reloaded the extension, and re-ran to block. 
-
+Since this was an undo-plus-redo, I changed everything in code back to the way it was before I undid, reloaded the extension, and re-ran to block.
